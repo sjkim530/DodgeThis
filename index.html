@@ -55,7 +55,7 @@ function preload ()
 function create ()
 {
     //  A simple background for our game
-    clouds = this.add.image(400, 280, 'background');
+    clouds = this.add.tileSprite(500, 300, 1600, 600, 'background');
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
@@ -122,6 +122,9 @@ function create ()
 
 function update ()
 {
+    //Set background image to scroll
+    clouds.tilePositionX += .3;
+
     if (gameOver)
     {
         return;
@@ -146,7 +149,7 @@ function update ()
         player.anims.play('turn');
     }
 
-    if (cursors.up.isDown && player.body.touching.down)
+    if (cursors.space.isDown && player.body.touching.down)
     {
         player.setVelocityY(-330);
     }
