@@ -95,13 +95,12 @@ function create ()
     //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
 
-    //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
+    //  Randomize bomb drop
     bombs = this.physics.add.group({
         key: 'bomb',
         repeat: bombCount,
-        setXY: { x: Phaser.Math.Between(0,800), y: 0, stepX: 70 }
+        setXY: { x: Phaser.Math.Between(0,800), y: 0, stepX: 0 }
     });
-
 
     bombs.children.iterate(function (child) {
         bombCount++
