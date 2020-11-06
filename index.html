@@ -8,6 +8,19 @@
         body {
             margin: 0;
         }
+        span {
+            font-weight: bold;
+            font-size: 20px
+        }
+        .left {
+            color: red;
+        }
+        .right {
+            color: blue;
+        }
+        .space {
+            color: green;
+        }
     </style>
 </head>
 <body>
@@ -171,6 +184,8 @@ function hitBomb (player, bomb)
 
     player.anims.play('turn');
 
+    bombEvent.remove()
+
     gameOver = true;
 }
 
@@ -179,9 +194,9 @@ function hitBomb (player, bomb)
 
 <div id='controls'>
     <h2>Controls</h2>
-    <span>Left: Left Arrow Key //</span>
-    <span>Right: Right Arrow Key//</span>
-    <span>Jump: Spacebar</span>
+    <span class="left">Left: Left Arrow Key //</span>
+    <span class="right">Right: Right Arrow Key //</span>
+    <span class="space">Jump: Spacebar</span>
 </div>
 
 </body>
