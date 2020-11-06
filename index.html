@@ -12,6 +12,7 @@
 </head>
 <body>
 
+<div id='game-screen'>
 <script type="text/javascript">
 
 var config = {
@@ -153,8 +154,9 @@ function createBombs() {
     bombs = this.physics.add.group({
         key: 'bomb',
         setXY: { x: Phaser.Math.Between(0,800), y: 0 },
-        setScale: { x: 1.75, y: 1.75 }
+        setScale: { x: 2, y: 2 }
     });
+
 }
 
 function getTimer() {
@@ -173,11 +175,14 @@ function hitBomb (player, bomb)
 }
 
 </script>
+</div>
 
-<!-- <div id='controls'>
+<div id='controls'>
     <h2>Controls</h2>
-
-</div> -->
+    <span>Left: Left Arrow Key //</span>
+    <span>Right: Right Arrow Key //</span>
+    <span>Jump: Spacebar</span>
+</div>
 
 </body>
 </html>
