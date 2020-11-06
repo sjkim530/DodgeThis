@@ -38,10 +38,10 @@ var bombs;
 var bombCount = 0
 var platforms;
 var cursors;
-var score = 0;
 var gameOver = false;
 var timeText;
 var bombEvent;
+var timer;
 
 var game = new Phaser.Game(config);
 
@@ -97,14 +97,16 @@ function create ()
     cursors = this.input.keyboard.createCursorKeys();
 
     //  Randomize bomb drop
-    bombEvent = this.time.addEvent({ delay: 500, callback: createBombs, callbackScope: this, loop: true })
+    bombEvent = this.time.addEvent({ delay: 100, callback: createBombs, callbackScope: this, loop: true })
 
-    //  Timer
-    timeText = this.add.text(16, 16, 'Time: 0', { fontSize: '32px', fill: '#000' });
+    //  Timer display
+    timeText = this.add.text(16, 16, '', { fontSize: '32px', fill: '#000' });
+    timer = this.time.addEvent({ delay: 0, callback: getTimer, loop: true })
 
     //  Collide the player with the ground
     this.physics.add.collider(player, platforms);
 
+    // Player and bomb collision
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 }
 
@@ -112,6 +114,10 @@ function update ()
 {
     // Set background image to scroll
     clouds.tilePositionX += .3;
+
+    // Timer
+    timeText.setText('Time: ' + timer.getElapsedSeconds().toFixed(2))
+
 
     if (gameOver)
     {
@@ -146,8 +152,13 @@ function update ()
 function createBombs() {
     bombs = this.physics.add.group({
         key: 'bomb',
-        setXY: { x: Phaser.Math.Between(0,800), y: 0 }
-    })
+        setXY: { x: Phaser.Math.Between(0,800), y: 0 },
+        setScale: { x: 1.75, y: 1.75 }
+    });
+}
+
+function getTimer() {
+
 }
 
 function hitBomb (player, bomb)
