@@ -111,7 +111,7 @@ function create ()
     cursors = this.input.keyboard.createCursorKeys();
 
     //  Randomize bomb drop
-    bombEvent = this.time.addEvent({ delay: 100, callback: createBombs, callbackScope: this, loop: true })
+    bombEvent = this.time.addEvent({ delay: 75, callback: createBombs, callbackScope: this, loop: true })
 
     //  Timer display
     timeText = this.add.text(16, 16, '', { fontSize: '32px', fill: '#000' });
