@@ -67,7 +67,7 @@ function create ()
     platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
     // The player and its settings
-    player = this.physics.add.sprite(100, 450, 'dude');
+    player = this.physics.add.sprite(100, 450, 'dude').setSize(28, 38);
 
     //  Player physics properties
     player.setBounce(0.2);
@@ -107,8 +107,6 @@ function create ()
     //  Collide the player with the ground
     this.physics.add.collider(player, platforms);
 
-    // Player and bomb collision
-    this.physics.add.collider(player, bombs, hitBomb, null, this);
 }
 
 function update ()
@@ -119,6 +117,8 @@ function update ()
     // Timer
     timeText.setText('Time: ' + timer.getElapsedSeconds().toFixed(2))
 
+    // Player and bomb collision
+    this.physics.add.collider(player, bombs, hitBomb, null, this);
 
     if (gameOver)
     {
@@ -156,7 +156,7 @@ function createBombs() {
         setXY: { x: Phaser.Math.Between(0,800), y: 0 },
         setScale: { x: 2, y: 2 }
     });
-
+    bombs.children.iterateLocal('setSize', 6, 7)
 }
 
 function getTimer() {
@@ -180,7 +180,7 @@ function hitBomb (player, bomb)
 <div id='controls'>
     <h2>Controls</h2>
     <span>Left: Left Arrow Key //</span>
-    <span>Right: Right Arrow Key //</span>
+    <span>Right: Right Arrow Key//</span>
     <span>Jump: Spacebar</span>
 </div>
 
