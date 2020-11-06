@@ -184,6 +184,8 @@ function hitBomb (player, bomb)
 
     player.anims.play('turn');
 
+    timer.paused = true
+
     bombEvent.remove()
 
     gameOver = true;
