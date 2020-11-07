@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/sjkim530/DodgeThis/issues"
   },
-  "homepage": "https://github.com/sjkim530/DodgeThis#readme"
+  "homepage": "https://github.com/sjkim530/DodgeThis#readme",
+  "dependencies": {
+    "ngrok": "^3.3.0"
+  }
 }
